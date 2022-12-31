@@ -167,14 +167,16 @@
     </dependencies>
      <build>
         <plugins>
-	    <plugin>
-         	 <groupId>org.apache.maven.plugins</groupId>
-          	<artifactId>maven-surefire-plugin</artifactId>
-          	<version>2.22.1</version>
-          	<configuration>
-          	 .......
-          	</configuration>
-	    <plugin>
+		<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-surefire-plugin</artifactId>
+<version>2.13</version>
+<configuration>
+<includes>
+<include>**/*Tests.java</include>
+</includes>
+</configuration>
+</plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -187,6 +189,17 @@
                 </configuration>
             </plugin>
 		<!-- CODE COVERAGE -->
+		<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <forkCount>1</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <runOrder>alphabetical</runOrder>
+                </configuration>
+            </plugin>
  		    <plugin>
  		        <groupId>org.jacoco</groupId>
  		        <artifactId>jacoco-maven-plugin</artifactId>
